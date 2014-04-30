@@ -1,0 +1,22 @@
+{
+  "name": "usabilitydynamics/lib-widget-conditions",
+  "version": "0.1.0",
+  "type": "library",
+  "description": "",
+  "author": {
+    "name": "Usability Dynamics",
+    "url": "http://UsabilityDynamics.com"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://repository.usabilitydynamics.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {}
+  "autoload": {
+    "classmap": [ "lib" ]
+  },
+  "license": "GPL-2.0"
+}
