@@ -49,11 +49,9 @@ namespace UsabilityDynamics\WidgetConditions {
           <?php
           }
           break;
-        case 'author':
-          ?>
+        case 'author': ?>
           <option value=""><?php _e( 'All author pages', 'jetpack' ); ?></option>
           <?php
-
           foreach( get_users( array( 'orderby' => 'name', 'exclude_admin' => true ) ) as $author ) {
             ?>
             <option value="<?php echo esc_attr( $author->ID ); ?>" <?php selected( $author->ID, $minor ); ?>><?php echo esc_html( $author->display_name ); ?></option>
