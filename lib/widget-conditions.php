@@ -14,10 +14,6 @@ namespace UsabilityDynamics\WidgetConditions {
 
     public static function init() {
 
-      if( class_exists( 'Jetpack_Widget_Conditions' ) ) {
-        return;
-      }
-
       if( is_admin() ) {
         add_action( 'sidebar_admin_setup', array( __CLASS__, 'widget_admin_setup' ) );
         add_filter( 'widget_update_callback', array( __CLASS__, 'widget_update' ), 10, 3 );
@@ -30,8 +26,8 @@ namespace UsabilityDynamics\WidgetConditions {
     }
 
     public static function widget_admin_setup() {
-      wp_enqueue_style( 'widget-conditions', plugins_url( '/static/styles/widget-conditions.css', __FILE__ ) );
-      wp_enqueue_script( 'widget-conditions', plugins_url( '/static/scripts/widget-conditions.js', __FILE__ ), array( 'jquery', 'jquery-ui-core' ), 20130129, true );
+      wp_enqueue_style( 'widget-conditions', plugins_url( '/static/styles/widget-conditions.css', dirname( __DIR__ ) ) );
+      wp_enqueue_script( 'widget-conditions', plugins_url( '/static/scripts/widget-conditions.js', dirname( __DIR__ )  ), array( 'jquery', 'jquery-ui-core' ), 20130129, true );
     }
 
     /**
@@ -139,6 +135,7 @@ namespace UsabilityDynamics\WidgetConditions {
      * @param array $instance The widget settings.
      */
     public static function admin( $widget, $return, $instance ) {
+
       $conditions = array();
 
       if( isset( $instance[ 'conditions' ] ) )
@@ -161,7 +158,7 @@ namespace UsabilityDynamics\WidgetConditions {
         <div class="widget-conditional-inner">
 				<div class="condition-top">
 					<?php printf( _x( '%s if:', 'placeholder: dropdown menu to select widget visibility; hide if or show if', 'jetpack' ), '<select name="conditions[action]"><option value="show" ' . selected( $conditions[ 'action' ], 'show', false ) . '>' . esc_html_x( 'Show', 'Used in the "%s if:" translation for the widget visibility dropdown', 'jetpack' ) . '</option><option value="hide" ' . selected( $conditions[ 'action' ], 'hide', false ) . '>' . esc_html_x( 'Hide', 'Used in the "%s if:" translation for the widget visibility dropdown', 'jetpack' ) . '</option></select>' ); ?>
-				</div><!-- .condition-top -->
+				</div>
 
 				<div class="conditions">
 					<?php
@@ -188,14 +185,14 @@ namespace UsabilityDynamics\WidgetConditions {
 								<a href="#" class="delete-condition"><?php esc_html_e( 'Delete', 'jetpack' ); ?></a> | <a href="#" class="add-condition"><?php esc_html_e( 'Add', 'jetpack' ); ?></a>
 							</div>
 							<br class="clear"/>
-						</div><!-- .condition -->
+						</div>
           <?php
           }
 
           ?>
-				</div><!-- .conditions -->
-			</div><!-- .widget-conditional-inner -->
-		</div><!-- .widget-conditional -->
+				</div>
+			</div>
+		</div>
     <?php
     }
 
