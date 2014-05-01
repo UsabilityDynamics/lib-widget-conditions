@@ -18,7 +18,7 @@ namespace UsabilityDynamics\WidgetConditions {
         add_action( 'sidebar_admin_setup', array( __CLASS__, 'widget_admin_setup' ) );
         add_filter( 'widget_update_callback', array( __CLASS__, 'widget_update' ), 10, 3 );
         add_action( 'in_widget_form', array( __CLASS__, 'admin' ), 10, 3 );
-        add_action( 'wp_ajax_options', array( __CLASS__, 'options' ) );
+        add_action( 'wp_ajax_/widget-conditions/options', array( __CLASS__, 'options' ) );
       } else {
         add_action( 'widget_display_callback', array( __CLASS__, 'filter_widget' ) );
         add_action( 'sidebars_widgets', array( __CLASS__, 'sidebars_widgets' ) );

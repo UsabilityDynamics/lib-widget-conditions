@@ -85,7 +85,7 @@ jQuery( function( $ ) {
       $conditionsRuleMinor.html( '' ).append( $( '<option/>' ).text( $conditionsRuleMinor.data( 'loading-text' ) ) );
 
       var data = {
-        action: 'widget_conditions_options',
+        action: '/widget-conditions/options',
         major: $conditionsRuleMajor.val()
       };
 
